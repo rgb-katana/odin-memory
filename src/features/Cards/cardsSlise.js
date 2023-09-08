@@ -18,15 +18,17 @@ export const fetchPokemons = createAsyncThunk(
   },
 );
 
-export const fetchPokemonImage = createAsyncThunk(
-  "cards/fetchPokemonImage",
-  async function (pokemonImageUrl) {
-    const response = await fetch(pokemonImageUrl);
-    const data = await response.json();
+// export function fetchPokemons() {
+//   return async function (dispatch) {
+//     dispatch({ type: "cards/fetchingPokemons" });
+//     const res = await fetch(
+//       "https://pokeapi.co/api/v2/pokemon?limit=12&offset=0",
+//     );
+//     const data = await res.json();
 
-    return data;
-  },
-);
+//     dispatch({ type: "cards/fetchPokemons", payload: data.results });
+//   };
+// }
 
 const cardsSlice = createSlice({
   name: "cards",

@@ -3,9 +3,9 @@ function Card({ name, pokemonId }) {
   const pokemonImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
 
   return (
-    <div>
-      {name}
+    <div className="flex flex-col">
       <img src={pokemonImageUrl} />
+      {name}
     </div>
   );
 }
