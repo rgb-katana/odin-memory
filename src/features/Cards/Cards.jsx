@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPokemons } from "./cardsSlise";
+import { shuffle } from "./cardsSlise";
 import Card from "./Card";
-import { useEffect } from "react";
+import { shuffleCards } from "../../helpers";
 
 const regex = /\/([^/]+)\/?$/;
 
@@ -9,22 +9,22 @@ function Cards() {
   const dispatch = useDispatch();
   const { cards } = useSelector((state) => state.cards);
 
-  useEffect(
-    function () {
-      dispatch(fetchPokemons());
-    },
-    [dispatch],
-  );
+  function onCardClick(pokemonId) {
+    const shuffledCards = shuffleCards(cards);
+    dispatch(shuffle(shuffledCards, pokemonId));
+  }
 
   return (
     <>
-      {cards.map((card) => (
-        <Card
-          pokemonId={card.url.match(regex)[1]}
-          name={card.name}
-          key={card.name}
-        />
-      ))}
+      {cards.length !== 0 &&
+        cards.map((card) => (
+          <Card
+            pokemonId={card.url.match(regex)[1]}
+            name={card.name}
+            key={card.name}
+            onClick={onCardClick}
+          />
+        ))}
     </>
   );
 }
