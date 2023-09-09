@@ -1,6 +1,6 @@
 function Header() {
   return (
-    <header className="flex items-center justify-center border-b-4 border-red-600/40  bg-red-400 py-2  font-mono text-2xl ">
+    <header className="hidden items-center justify-center border-red-600/40 bg-red-400  font-mono text-2xl sm:flex md:border-b-4 md:py-2">
       Memory game
     </header>
   );

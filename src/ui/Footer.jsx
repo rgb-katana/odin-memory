@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="flex items-center justify-center border-t-4 border-red-600/40 bg-red-400 py-2 font-mono">
+    <footer className="hidden items-center justify-center border-red-600/40 bg-red-400 font-mono sm:flex md:border-t-4 md:py-2">
       Footer
     </footer>
   );

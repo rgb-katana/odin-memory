@@ -8,7 +8,6 @@ const initialState = {
   currentScore: 0,
   bestScore: 0,
   haveWon: false,
-  isShuffling: false,
 };
 
 export const fetchCards = createAsyncThunk(
@@ -28,8 +27,12 @@ const cardsSlice = createSlice({
   name: "cards",
   initialState,
   reducers: {
-    startShuffle(state, action) {
-      state.isShuffling = true;
+    startAgain(state, action) {
+      state.haveWon = false;
+      state.cards = [];
+      state.currentScore = 0;
+      state.bestScore = 0;
+      state.currentHits = [];
     },
     shuffle: {
       prepare(newCards, pokemonId) {
@@ -39,7 +42,6 @@ const cardsSlice = createSlice({
       },
       reducer(state, action) {
         const { pokemonId, newCards } = action.payload;
-        state.isShuffling = false;
         state.cards = newCards;
         const isAlreadyIn = state.currentHits.find((id) => id === pokemonId);
         if (isAlreadyIn) {
@@ -77,4 +79,4 @@ const cardsSlice = createSlice({
 
 export default cardsSlice.reducer;
 
-export const { shuffle, endGame, startShuffle } = cardsSlice.actions;
+export const { shuffle, endGame, startAgain } = cardsSlice.actions;

@@ -19,7 +19,7 @@ function Card({ name, pokemonId, onClick }) {
 
   return (
     <div
-      className="pop teal-200 flex flex-col items-center justify-center rounded-md border-2 border-teal-400 bg-teal-300 transition-colors hover:bg-teal-200"
+      className="teal-200 flex flex-col items-center justify-center rounded-md border-2 border-teal-400 bg-teal-300 transition-colors hover:bg-teal-200"
       onClick={() => onClick(pokemonId)}
     >
       <img src={image} className="w-3/4" />
