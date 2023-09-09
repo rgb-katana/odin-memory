@@ -8,7 +8,7 @@ function AppLayout({ children }) {
   const { isLoading, haveWon } = useSelector((state) => state.cards);
   // const haveWon = true;
   return (
-    <div className="mx-auto grid h-screen grid-rows-[auto_1fr_auto]">
+    <div className="mx-auto grid h-screen grid-rows-[auto_1fr_auto] text-2xl">
       {isLoading && <Loader />}
       {haveWon && <WinWindow />}
       <Header />
