@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { shuffle } from "./cardsSlise";
+import { shuffle, startShuffle } from "./cardsSlise";
 import Card from "./Card";
 import { shuffleCards } from "../../helpers";
 
@@ -7,12 +7,15 @@ const regex = /\/([^/]+)\/?$/;
 
 function Cards() {
   const dispatch = useDispatch();
-  const { cards } = useSelector((state) => state.cards);
+  const { cards, isShuffling } = useSelector((state) => state.cards);
 
   function onCardClick(pokemonId) {
+    dispatch(startShuffle());
     const shuffledCards = shuffleCards(cards);
     dispatch(shuffle(shuffledCards, pokemonId));
   }
+
+  if (isShuffling) return <></>;
 
   return (
     <>
